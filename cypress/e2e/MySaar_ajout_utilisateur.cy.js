@@ -16,7 +16,20 @@ describe('Offre d\'emploi', () => {
         .click();
     });
 
+    it('Ajout nominal d\'un utilisateur', () => {
 
+      cy.get('span.text-sm group-hover:text-red-600 transition-colors').click({force: true});
+      cy.contains('span', /Ajouter un utilisateur/i).click({force: true});
+      cy.get('input[formcontrolname="login"]').type('head');
+      cy.get('input[formcontrolname="password"]').type('saarsaar');
+      cy.get('input[formcontrolname="lastname"]').type('Kofane');
+      cy.get('input[formcontrolname="firstname"]').type('Tchamadeu');
+      cy.get('input[formcontrolname="mail"]').type('leocadiearistone3@gmail.com');
+      cy.get('input[formcontrolname="telephone"]').type('672962259');
+      cy.get('select[formcontrolname="usertype"]').select('ADMINISTRATEUR');
+      cy.contains('button', /Enregistrér/i).click();
+
+    });
 
     
 });    

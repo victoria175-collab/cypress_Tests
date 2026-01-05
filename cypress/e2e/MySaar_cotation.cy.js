@@ -13,6 +13,8 @@ describe('Remplissage de formulaires', () => {
           .should('be.visible')
           .click({ force: true });
       });
+  
+    
   });
 
   // test 1
@@ -60,7 +62,7 @@ describe('Remplissage de formulaires', () => {
   });
 
 
-  //test 2
+//   //test 2
    it('requiement des champs obligatoires et limitation des caracteres dans les champs', () => {
     cy.wait(2000)
     cy.contains('button', 'TOUT REFUSER', { matchCase: false })
@@ -134,9 +136,7 @@ describe('Remplissage de formulaires', () => {
     cy.contains('button', /Retour à la sélection de cotation/i).should('exist')
       .click({force: true});  
   })
-});
-
-
+ });
 
 
 
