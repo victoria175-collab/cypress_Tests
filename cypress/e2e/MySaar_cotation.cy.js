@@ -2,7 +2,9 @@ Cypress.on('uncaught:exception', () => {
   return false;
 });
 
-describe('Remplissage de formulaires', () => {
+     // Assurance voyage 
+
+describe('Remplissage de formulaires Assurance voyage', () => {
 
   beforeEach(() => {
     cy.visit('http://10.0.102.67:4200/fr/cotation-en-ligne');
@@ -13,10 +15,8 @@ describe('Remplissage de formulaires', () => {
           .should('be.visible')
           .click({ force: true });
       });
-  
-    
   });
-
+   
   // test 1
   it('remplissage nominal', () => {
     cy.wait(2000)
@@ -140,6 +140,34 @@ describe('Remplissage de formulaires', () => {
 
 
 
+      // Assurance Auto
 
+describe.only('Remplissage de formulaires Assurance Auto', () => {
 
+  beforeEach(() => {
+    cy.visit('http://10.0.102.67:4200/fr/cotation-en-ligne');
+    cy.wait(2000); 
+    cy.contains('div.price-card', 'Assurance Auto') 
+      .within(() => {
+        cy.contains('a.th-btn.btn-fw', /Devis/i)
+          .should('be.visible')
+          .click({ force: true });
+      });
+    
+    cy.wait(2000)
+    cy.contains('button', 'TOUT REFUSER', { matchCase: false })
+    .scrollIntoView()
+    .should('be.visible')
+    .click();  
+  });
+   
+  it('Remplissage nominal', () => {
+    cy.contains('h4', 'Email', {timeout: 150000}).click();
+    cy.get('input[formcontrolname="email"]').eq(0).type('leocadiearistone3@gmail.com');
+    cy.get('input[formcontrolname="duree"]', {timeout: 150000}).type('365');
+    cy.get('input[formcontrolname="dateEffet"]').type('2026-01-19');
+    //cy.get('select[formcontrolname=""]').select("");
+    cy.contains('button', 'Suivant').should('be.disabled');
+  });
 
+});
