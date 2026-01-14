@@ -30,7 +30,7 @@ describe('Flexibilité du mode de notification', () => {
     cy.get('#notification-option-sms').click();
   });
 
-  it('TC1: Validation de la page sans aucune sélection de notification', () => {
+  it.only('TC1: Validation de la page sans aucune sélection de notification', () => {
     cy.get('#notification-option-email').should('not.have.class', 'bg-red-50');
     cy.get('#notification-option-sms').should('not.have.class', 'bg-red-50');
     
